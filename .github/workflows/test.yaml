@@ -1,7 +1,7 @@
 name: Test_react_app
 on: push
 jobs:
-  test1:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - name: checkout_repository
@@ -10,5 +10,21 @@ jobs:
         run: npm ci
       - name: check some tests
         run: npm run test
+  eslnt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout_repository
+        uses: actions/checkout@v4
+      - name: install dependency env
+        run: npm ci
       - name: check Eslint
         run: npm run lint
+  build_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout_repository
+        uses: actions/checkout@v4
+      - name: install dependency env
+        run: npm ci
+      - name: build app
+        run: npm run build
