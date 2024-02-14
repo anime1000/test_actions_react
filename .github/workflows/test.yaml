@@ -10,3 +10,5 @@ jobs:
         run: npm ci
       - name: check some tests
         run: npm run test
+      - name: check Eslint
+        run: npm run lint
