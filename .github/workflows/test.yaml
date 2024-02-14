@@ -2,10 +2,18 @@ name: Test_react_app1
 on: push
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, ubuntu-18.04]
+        node: [18, 20]
+    runs-on: ${{matrix.os}}
     steps:
       - name: checkout_repository
         uses: actions/checkout@v4
+      - name: install node with matrix
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{matrix.node}}
       - name: caching tests
         uses: actions/cache@v3
         with:
