@@ -1,0 +1,12 @@
+name: Test_react_app
+on: push
+jobs:
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout_repository
+        uses: actions/checkout@v4
+      - name: install dependency env
+        run: npm ci
+      - name: check some tests
+        run: npm run test
