@@ -1,5 +1,5 @@
 name: first
-on: [pull_request]
+on: [pull_request, push]
 jobs: 
     react-tests:
         runs-on: ubuntu-20.04
