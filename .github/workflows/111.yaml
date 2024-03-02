@@ -9,7 +9,7 @@ jobs:
         - name: install node
           uses: actions/setup-node@v4
           with:
-            node-version: 20.04
+            node-version: 20
         - name: install depy
           run: npm ci
         - name: running tests
