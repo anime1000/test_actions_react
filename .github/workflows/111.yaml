@@ -1,5 +1,7 @@
 name: first
 on: [pull_request, push]
+env:
+    DAY: SATARDAY
 jobs: 
     react-tests:
         runs-on: ubuntu-20.04
@@ -19,6 +21,15 @@ jobs:
           run: npm ci
         - name: running tests
           run: npm run test
+
+
+    helloWorld:
+        runs-on: ubuntu-20.04
+        steps:
+        - name: hello world
+          run: echo HELLO WORLD
+        - name: test env vars
+          run: var is working ${{env.DAY}}
     
     react-eslint:
         runs-on: ubuntu-20.04
