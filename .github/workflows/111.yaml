@@ -1,0 +1,16 @@
+name: first
+on: [pull_request]
+jobs: 
+    react-tests:
+        runs-on: ubuntu-20.04
+        steps:
+        - name: clone repo
+          uses: actions/checkout@v4
+        - name: install node
+          uses: actions/setup-node@v4
+          with:
+            node-version: 20.04
+        - name: install depy
+          run: npm ci
+        - name: running tests
+          run: npm run test
