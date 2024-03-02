@@ -10,7 +10,31 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: 20
-        - name: install depy
+        - name: cache pachelockjson
+          uses: actions/cache@v3
+          with:
+              path: ~/.npm
+              key: npm-${{ hashFiles('**/package-lock.json') }}
+        - name: install dependencies
           run: npm ci
         - name: running tests
           run: npm run test
+    
+    react-eslint:
+        runs-on: ubuntu-20.04
+        steps:
+        - name: clone repo
+          uses: actions/checkout@v4
+        - name: install node
+          uses: actions/setup-node@v4
+          with:
+            node-version: 20
+        - name: cache pachelockjson
+          uses: actions/cache@v3
+          with:
+            path: ~/.npm
+            key: npm-${{ hashFiles('**/package-lock.json') }}
+        - name: install dependencies
+          run: npm ci
+        - name: runninng eslint 
+          run: npm run lint
